@@ -6,6 +6,7 @@ Release:	1
 Epoch:		0
 License:	BSD
 Group:		Libraries
+#Source0Download: http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
 # Source0-md5:	d40f923789b81bc15f5ffd9ad48fe770
 Patch0:		%{name}-shared.patch
@@ -25,7 +26,7 @@ found in event-driven network servers.
 API libevent dostarcza mechanizm do wykonywania funkcji callback,
 kiedy nast±pi³o okre¶lone zdarzenie w deskryptorze pliku lub po
 okre¶lonym czasie. Ma to na celu zast±pienie asynchronicznych pêtli w
-sterowanych zdarzeniami serwisach sieciowych.
+sterowanych zdarzeniami us³ugach sieciowych.
 
 %package devel
 Summary:	Header files for libevent library
