@@ -1,5 +1,5 @@
 Summary:	libevent - an event notification library
-Summary(pl):	libevent - biblioteka odnotywuj±ca zdarzenia
+Summary(pl):	libevent - biblioteka odnotowuj±ca zdarzenia
 Name:		libevent
 Version:	0.7c
 Release:	0.1
@@ -12,16 +12,16 @@ URL:		http://www.monkey.org/~provos/libevent/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The libevent API provides a mechanism to execute a callback function when 
-a specific event occurs on a file descriptor or after a timeout has been 
-reached. It is meant to replace the asynchronous event loop found in 
-event-driven network servers.
+The libevent API provides a mechanism to execute a callback function
+when a specific event occurs on a file descriptor or after a timeout
+has been reached. It is meant to replace the asynchronous event loop
+found in event-driven network servers.
 
 %description -l pl
-API libevent dostarcza mechanizm do wykonywania funkcji callback kiedy
-nast±pi³o okre¶lone zadarzenie w deskryptorze pliku lub po okre¶lonym czasie.
-Ma to na celu zast±pienie asynchronicznych pêtli w sterowanych zdarzeniami
-serwisach sieciowych.
+API libevent dostarcza mechanizm do wykonywania funkcji callback,
+kiedy nast±pi³o okre¶lone zadarzenie w deskryptorze pliku lub po
+okre¶lonym czasie. Ma to na celu zast±pienie asynchronicznych pêtli w
+sterowanych zdarzeniami serwisach sieciowych.
 
 %package devel
 Summary:	Header files for libevent library
