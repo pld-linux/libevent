@@ -24,8 +24,8 @@
  
 -bench test-init test-eof test-weof test-time regress: ../libevent.a
 +bench test-init test-eof test-weof test-time regress: ../libevent.la
---- libevent-0.7c/Makefile.am.orig	2003-09-28 23:57:18.000000000 +0200
-+++ libevent-0.7c/Makefile.am	2003-10-29 22:35:48.892059568 +0100
+--- libevent-1.0/Makefile.am.orig	2004-12-05 23:00:17.000000000 +0100
++++ libevent-1.0/Makefile.am	2004-12-22 16:11:59.000000000 +0100
 @@ -19,10 +19,10 @@
  	WIN32-Prj/signal_test/signal_test.dsp WIN32-Prj/time_test \
  	WIN32-Prj/time_test/time_test.dsp
@@ -33,9 +33,9 @@
 -lib_LIBRARIES = libevent.a
 +lib_LTLIBRARIES = libevent.la
  
--libevent_a_SOURCES = event.c
+-libevent_a_SOURCES = event.c buffer.c evbuffer.c
 -libevent_a_LIBADD = @LIBOBJS@
-+libevent_la_SOURCES = event.c
++libevent_la_SOURCES = event.c buffer.c evbuffer.c
 +libevent_la_LIBADD = @LTLIBOBJS@
  
  include_HEADERS = event.h
