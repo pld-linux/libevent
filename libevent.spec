@@ -2,7 +2,7 @@ Summary:	libevent - an event notification library
 Summary(pl):	libevent - biblioteka powiadamiaj±ca o zdarzeniach
 Name:		libevent
 Version:	0.7c
-Release:	0.1
+Release:	1
 Epoch:		0
 License:	BSD
 Group:		Libraries
@@ -31,7 +31,7 @@ sterowanych zdarzeniami serwisach sieciowych.
 Summary:	Header files for libevent library
 Summary(pl):	Pliki nag³ówkowe biblioteki libevent
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files for libevent library.
@@ -43,7 +43,7 @@ Pliki nag³ówkowe biblioteki libevent.
 Summary:	Static libevent library
 Summary(pl):	Statyczna biblioteka libevent
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libevent library.
