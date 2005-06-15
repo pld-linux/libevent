@@ -1,3 +1,4 @@
+%bcond_without	static_libs	# don't build static library
 Summary:	libevent - an event notification library
 Summary(pl):	libevent - biblioteka powiadamiaj±ca o zdarzeniach
 Name:		libevent
@@ -61,7 +62,8 @@ Statyczna biblioteka libevent.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -87,6 +89,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*.h
 %{_mandir}/man3/*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
