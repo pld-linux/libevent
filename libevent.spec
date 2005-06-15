@@ -1,4 +1,6 @@
+# Conditional build:
 %bcond_without	static_libs	# don't build static library
+#
 Summary:	libevent - an event notification library
 Summary(pl):	libevent - biblioteka powiadamiaj±ca o zdarzeniach
 Name:		libevent
