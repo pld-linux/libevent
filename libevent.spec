@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
@@ -10,7 +11,7 @@ Epoch:		0
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
-# Source0-md5:	d2970ee6089f92e15181018b31b5cd74
+# Source0-md5:	6cc776458ecaf9247550863702a44d7c
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
