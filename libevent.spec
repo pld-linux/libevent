@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	libevent - an event notification library
-Summary(pl):	libevent - biblioteka powiadamiaj±ca o zdarzeniach
+Summary(pl.UTF-8):   libevent - biblioteka powiadamiajƒÖca o zdarzeniach
 Name:		libevent
 Version:	1.2
 Release:	1
@@ -24,34 +24,34 @@ when a specific event occurs on a file descriptor or after a timeout
 has been reached. It is meant to replace the asynchronous event loop
 found in event-driven network servers.
 
-%description -l pl
+%description -l pl.UTF-8
 API libevent dostarcza mechanizm do wykonywania funkcji callback,
-kiedy nast±pi≥o okre∂lone zdarzenie w deskryptorze pliku lub po
-okre∂lonym czasie. Ma to na celu zast±pienie asynchronicznych pÍtli w
-sterowanych zdarzeniami us≥ugach sieciowych.
+kiedy nastƒÖpi≈Ço okre≈õlone zdarzenie w deskryptorze pliku lub po
+okre≈õlonym czasie. Ma to na celu zastƒÖpienie asynchronicznych pƒôtli w
+sterowanych zdarzeniami us≈Çugach sieciowych.
 
 %package devel
 Summary:	Header files for libevent library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki libevent
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki libevent
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description devel
 Header files for libevent library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki libevent.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki libevent.
 
 %package static
 Summary:	Static libevent library
-Summary(pl):	Statyczna biblioteka libevent
+Summary(pl.UTF-8):   Statyczna biblioteka libevent
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libevent library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libevent.
 
 %prep
