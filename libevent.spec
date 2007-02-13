@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	libevent - an event notification library
-Summary(pl.UTF-8):   libevent - biblioteka powiadamiająca o zdarzeniach
+Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
 Version:	1.2
 Release:	1
@@ -32,7 +32,7 @@ sterowanych zdarzeniami usługach sieciowych.
 
 %package devel
 Summary:	Header files for libevent library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libevent
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libevent
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -44,7 +44,7 @@ Pliki nagłówkowe biblioteki libevent.
 
 %package static
 Summary:	Static libevent library
-Summary(pl.UTF-8):   Statyczna biblioteka libevent
+Summary(pl.UTF-8):	Statyczna biblioteka libevent
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
