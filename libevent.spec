@@ -5,13 +5,14 @@
 Summary:	libevent - an event notification library
 Summary(pl):	libevent - biblioteka powiadamiaj±ca o zdarzeniach
 Name:		libevent
-Version:	1.2
+Version:	1.3a
 Release:	1
 Epoch:		0
 License:	BSD
 Group:		Libraries
+#Source0Download: http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
-# Source0-md5:	3b7de04a7fa0ac2d96f714f720161c3f
+# Source0-md5:	92011285cae8d7c37e587b0f82e441e5
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -81,17 +82,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libevent-*.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
-%{_mandir}/man3/*
+# R: python
+#%attr(755,root,root) %{_bindir}/event_rpcgen.py
+%attr(755,root,root) %{_libdir}/libevent.so
+%{_libdir}/libevent.la
+%{_includedir}/ev*.h
+%{_mandir}/man3/ev*.3*
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libevent.a
 %endif
