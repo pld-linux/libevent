@@ -5,14 +5,14 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	1.3d
+Version:	1.3e
 Release:	1
 Epoch:		0
 License:	BSD
 Group:		Libraries
 #Source0Download: http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
-# Source0-md5:	664a429247e7737162bd667e166b2761
+# Source0-md5:	8553ad0f8a35d8d96ae0c69c387e06d3
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
