@@ -5,14 +5,14 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	1.3e
+Version:	1.4.5
 Release:	1
 Epoch:		0
 License:	BSD
 Group:		Libraries
 #Source0Download: http://www.monkey.org/~provos/libevent/
-Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
-# Source0-md5:	8553ad0f8a35d8d96ae0c69c387e06d3
+Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
+# Source0-md5:	efd44048cc890ad11f7099bc01e43e4a
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -56,7 +56,7 @@ Static libevent library.
 Statyczna biblioteka libevent.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-stable
 
 %build
 %{__libtoolize}
@@ -82,19 +82,35 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libevent-*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libevent-1.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent-1.4.so.2
+%attr(755,root,root) %{_libdir}/libevent_core-1.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_core-1.4.so.2
+%attr(755,root,root) %{_libdir}/libevent_extra-1.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra-1.4.so.2
 
 %files devel
 %defattr(644,root,root,755)
 # R: python
 #%attr(755,root,root) %{_bindir}/event_rpcgen.py
 %attr(755,root,root) %{_libdir}/libevent.so
+%attr(755,root,root) %{_libdir}/libevent_core.so
+%attr(755,root,root) %{_libdir}/libevent_extra.so
 %{_libdir}/libevent.la
-%{_includedir}/ev*.h
-%{_mandir}/man3/ev*.3*
+%{_libdir}/libevent_core.la
+%{_libdir}/libevent_extra.la
+%{_includedir}/evdns.h
+%{_includedir}/event*.h
+%{_includedir}/evhttp.h
+%{_includedir}/evrpc.h
+%{_includedir}/evutil.h
+%{_mandir}/man3/evdns.3*
+%{_mandir}/man3/event.3*
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libevent.a
+%{_libdir}/libevent_core.a
+%{_libdir}/libevent_extra.a
 %endif
