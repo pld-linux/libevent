@@ -1,0 +1,19 @@
+--- libevent-1.4.0-beta/event.c~	2008-11-16 17:02:40.080346805 +0200
++++ libevent-1.4.0-beta/event.c	2008-11-16 17:03:08.417222300 +0200
+@@ -226,16 +226,10 @@
+ 	if (base->evsel->dealloc != NULL)
+ 		base->evsel->dealloc(base, base->evbase);
+ 
+-	for (i=0; i < base->nactivequeues; ++i)
+-		assert(TAILQ_EMPTY(base->activequeues[i]));
+-	assert(min_heap_empty(&base->timeheap));
+-
+ 	for (i = 0; i < base->nactivequeues; ++i)
+ 		free(base->activequeues[i]);
+ 	free(base->activequeues);
+ 
+-	assert(TAILQ_EMPTY(&base->eventqueue));
+-
+ 	free(base);
+ }
+ 
