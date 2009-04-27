@@ -7,18 +7,19 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	1.4.10
-Release:	1
+Version:	2.0.1
+Release:	0.alpha.1
 Epoch:		0
 License:	BSD
 Group:		Libraries
-Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
-# Source0-md5:	20611535f26d415bd6ad380a673d9ea2
+Source0:	http://www.monkey.org/~provos/%{name}-%{version}-alpha.tar.gz
+# Source0-md5:	594081fd64daca710e491ee40e0f7bf1
 Patch0:		%{name}-fpm.patch
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -58,12 +59,12 @@ Static libevent library.
 Statyczna biblioteka libevent.
 
 %prep
-%setup -q -n %{name}-%{version}-stable
+%setup -q -n %{name}-%{version}-alpha
 %patch0 -p1
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -85,23 +86,29 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libevent-1.4.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent-1.4.so.2
-%attr(755,root,root) %{_libdir}/libevent_core-1.4.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core-1.4.so.2
-%attr(755,root,root) %{_libdir}/libevent_extra-1.4.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra-1.4.so.2
+%attr(755,root,root) %{_libdir}/libevent-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.1
+%attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.1
+%attr(755,root,root) %{_libdir}/libevent_extra-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.0.so.1
+%attr(755,root,root) %{_libdir}/libevent_pthreads.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads.so.0
 
 %files devel
 %defattr(644,root,root,755)
 # R: python
-#%attr(755,root,root) %{_bindir}/event_rpcgen.py
+%attr(755,root,root) %{_bindir}/event_rpcgen.py
 %attr(755,root,root) %{_libdir}/libevent.so
 %attr(755,root,root) %{_libdir}/libevent_core.so
 %attr(755,root,root) %{_libdir}/libevent_extra.so
+%attr(755,root,root) %{_libdir}/libevent_pthreads.so
 %{_libdir}/libevent.la
 %{_libdir}/libevent_core.la
 %{_libdir}/libevent_extra.la
+%{_libdir}/libevent_pthreads.la
+%dir %{_includedir}/event2
+%{_includedir}/event2/*.h
 %{_includedir}/evdns.h
 %{_includedir}/event*.h
 %{_includedir}/evhttp.h
@@ -109,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/evutil.h
 %{_mandir}/man3/evdns.3*
 %{_mandir}/man3/event.3*
+%{_pkgconfigdir}/libevent.pc
 
 %if %{with static_libs}
 %files static
@@ -116,4 +124,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libevent.a
 %{_libdir}/libevent_core.a
 %{_libdir}/libevent_extra.a
+%{_libdir}/libevent_pthreads.a
 %endif
