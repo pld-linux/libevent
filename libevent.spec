@@ -7,13 +7,13 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.0.1
+Version:	2.0.2
 Release:	0.alpha.1
 Epoch:		0
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-alpha.tar.gz
-# Source0-md5:	594081fd64daca710e491ee40e0f7bf1
+# Source0-md5:	d8e3259998516b5c5c23fc5f1ec52930
 Patch0:		%{name}-fpm.patch
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
@@ -86,12 +86,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libevent-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.1
-%attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.1
-%attr(755,root,root) %{_libdir}/libevent_extra-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.0.so.1
+%attr(755,root,root) %{_libdir}/libevent.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent.so.2
+%attr(755,root,root) %{_libdir}/libevent_core.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_core.so.2
+%attr(755,root,root) %{_libdir}/libevent_extra.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra.so.2
 %attr(755,root,root) %{_libdir}/libevent_pthreads.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libevent_pthreads.so.0
 
