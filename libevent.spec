@@ -7,13 +7,13 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.0.3
+Version:	2.0.4
 Release:	0.alpha.1
 Epoch:		0
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-alpha.tar.gz
-# Source0-md5:	3506fd2a79b9945ac157ab2eb7f5d1f4
+# Source0-md5:	dbc50f32af9f2ade151a0737e5edf205
 Patch0:		%{name}-fpm.patch
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
@@ -87,11 +87,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libevent.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent.so.3
 %attr(755,root,root) %{_libdir}/libevent_core.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent_core.so.3
 %attr(755,root,root) %{_libdir}/libevent_extra.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra.so.3
 %attr(755,root,root) %{_libdir}/libevent_pthreads.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libevent_pthreads.so.0
 
@@ -102,10 +102,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libevent.so
 %attr(755,root,root) %{_libdir}/libevent_core.so
 %attr(755,root,root) %{_libdir}/libevent_extra.so
+%attr(755,root,root) %{_libdir}/libevent_openssl.so
 %attr(755,root,root) %{_libdir}/libevent_pthreads.so
 %{_libdir}/libevent.la
 %{_libdir}/libevent_core.la
 %{_libdir}/libevent_extra.la
+%{_libdir}/libevent_openssl.la
 %{_libdir}/libevent_pthreads.la
 %dir %{_includedir}/event2
 %{_includedir}/event2/*.h
@@ -124,5 +126,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libevent.a
 %{_libdir}/libevent_core.a
 %{_libdir}/libevent_extra.a
+%{_libdir}/libevent_openssl.a
 %{_libdir}/libevent_pthreads.a
 %endif
