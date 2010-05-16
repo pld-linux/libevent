@@ -1,5 +1,6 @@
 # TODO
 # - %attr(755,root,root) %{_bindir}/event_rpcgen.py
+# - needs -levent: /usr/lib64/libevent_extra-1.4.so.2.1.3
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
@@ -8,13 +9,13 @@ Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
 Version:	1.4.13
-Release:	1
-Epoch:		0
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 # Source0-md5:	0b3ea18c634072d12b3c1ee734263664
 Patch0:		%{name}-fpm.patch
+Patch1:		%{name}.fb-changes.diff
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -37,7 +38,7 @@ sterowanych zdarzeniami usługach sieciowych.
 Summary:	Header files for libevent library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libevent
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libevent library.
@@ -49,7 +50,7 @@ Pliki nagłówkowe biblioteki libevent.
 Summary:	Static libevent library
 Summary(pl.UTF-8):	Statyczna biblioteka libevent
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libevent library.
@@ -60,6 +61,7 @@ Statyczna biblioteka libevent.
 %prep
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
+%patch1 -p0
 
 %build
 %{__libtoolize}
