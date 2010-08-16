@@ -7,13 +7,13 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.0.5
-Release:	0.beta.1
+Version:	2.0.6
+Release:	0.rc.1
 Epoch:		0
 License:	BSD
 Group:		Libraries
-Source0:	http://www.monkey.org/~provos/%{name}-%{version}-beta.tar.gz
-# Source0-md5:	600c2ebbcc04b1235df2baccf2767307
+Source0:	http://www.monkey.org/~provos/%{name}-%{version}-rc.tar.gz
+# Source0-md5:	7ca378a8abfcf46300fcb534ba140e90
 Patch0:		%{name}-fpm.patch
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
@@ -59,7 +59,7 @@ Static libevent library.
 Statyczna biblioteka libevent.
 
 %prep
-%setup -q -n %{name}-%{version}-beta
+%setup -q -n %{name}-%{version}-rc
 %patch0 -p1
 
 %build
@@ -86,16 +86,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libevent.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent.so.4
-%attr(755,root,root) %{_libdir}/libevent_core.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core.so.4
-%attr(755,root,root) %{_libdir}/libevent_extra.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra.so.4
-%attr(755,root,root) %{_libdir}/libevent_openssl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_openssl.so.4
-%attr(755,root,root) %{_libdir}/libevent_pthreads.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads.so.0
+%attr(755,root,root) %{_libdir}/libevent-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.2
+%attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.2
+%attr(755,root,root) %{_libdir}/libevent_extra-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.0.so.2
+%attr(755,root,root) %{_libdir}/libevent_openssl-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.0.so.2
+%attr(755,root,root) %{_libdir}/libevent_pthreads-2.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.0.so.2
 
 %files devel
 %defattr(644,root,root,755)
