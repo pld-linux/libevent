@@ -21,7 +21,7 @@ URL:		http://www.monkey.org/~provos/libevent/
 %{?with_dietlibc:BuildRequires:	dietlibc-static >= 2:0.31-5}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# for some reason known only to rpm there must be "\\|" not "\|" here
+# to get backslash, we need to escape it from spec parser. therefore "\\|" not "\|" here
 %define		dietarch	%(echo %{_target_cpu} | sed -e 's/i.86\\|pentium.\\|athlon/i386/;s/amd64/x86_64/;s/armv.*/arm/')
 %define		dietlibdir	%{_prefix}/lib/dietlibc/lib-%{dietarch}
 
