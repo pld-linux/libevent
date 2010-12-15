@@ -7,13 +7,12 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.0.7
+Version:	2.0.9
 Release:	0.rc.1
-Epoch:		0
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-rc.tar.gz
-# Source0-md5:	c14d4cf6e7b0d94fe69b88a977214432
+# Source0-md5:	c2f535597ddb1e2acc657dd9b7c075cc
 Patch0:		%{name}-fpm.patch
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
@@ -21,6 +20,8 @@ BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		skip_post_check_so	libevent_pthreads-2.0.so.* libevent_extra-2.0.so.* libevent_openssl-2.0.so.*
 
 %description
 The libevent API provides a mechanism to execute a callback function
@@ -87,15 +88,15 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libevent-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_extra-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_openssl-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_pthreads-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.0.so.2
+%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.0.so.5
 
 %files devel
 %defattr(644,root,root,755)
@@ -121,6 +122,8 @@ rm -rf $RPM_BUILD_ROOT
 #%%{_mandir}/man3/evdns.3*
 #%%{_mandir}/man3/event.3*
 %{_pkgconfigdir}/libevent.pc
+%{_pkgconfigdir}/libevent_openssl.pc
+%{_pkgconfigdir}/libevent_pthreads.pc
 
 %if %{with static_libs}
 %files static
