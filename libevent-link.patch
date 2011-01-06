@@ -1,0 +1,11 @@
+--- libevent-1.4.14b-stable/Makefile.am~	2010-06-20 15:06:04.000000000 +0200
++++ libevent-1.4.14b-stable/Makefile.am	2011-01-06 21:59:18.796428618 +0100
+@@ -127,7 +127,7 @@
+ libevent_core_la_LDFLAGS = -release $(RELEASE) -version-info $(VERSION_INFO)
+ 
+ libevent_extra_la_SOURCES = $(EXTRA_SRC)
+-libevent_extra_la_LIBADD = @LTLIBOBJS@ $(SYS_LIBS)
++libevent_extra_la_LIBADD = @LTLIBOBJS@ $(SYS_LIBS) libevent.la
+ libevent_extra_la_LDFLAGS = -release $(RELEASE) -version-info $(VERSION_INFO)
+ 
+ include_HEADERS = event.h evhttp.h evdns.h evrpc.h evutil.h
