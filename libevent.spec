@@ -17,8 +17,12 @@ Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 # Source0-md5:	a00e037e4d3f9e4fe9893e8a2d27918c
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}.fb-changes.diff
+Patch2:		%{name}-link.patch
 URL:		http://www.monkey.org/~provos/libevent/
+BuildRequires:	autoconf
+BuildRequires:	automake
 %{?with_dietlibc:BuildRequires:	dietlibc-static >= 2:0.31-5}
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # to get backslash, we need to escape it from spec parser. therefore "\\|" not "\|" here
@@ -77,8 +81,13 @@ Biblioteka statyczna dietlibc libevent.
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %if %{with dietlibc}
 %configure \
 	CC="diet %{__cc} %{rpmcflags} %{rpmldflags} -Os -D_BSD_SOURCE -D_EVENT_HAVE_FD_MASK" \
