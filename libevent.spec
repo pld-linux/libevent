@@ -14,14 +14,13 @@ Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 # Source0-md5:	a37401d26cbbf28185211d582741a3d4
 Patch0:		%{name}-fpm.patch
+Patch1:		%{name}-link.patch
 URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		skip_post_check_so	libevent_pthreads-2.0.so.* libevent_extra-2.0.so.* libevent_openssl-2.0.so.*
 
 %description
 The libevent API provides a mechanism to execute a callback function
@@ -62,6 +61,7 @@ Statyczna biblioteka libevent.
 %prep
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
