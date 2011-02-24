@@ -1,21 +1,19 @@
---- libevent-1.4.7-stable/event.c~	2008-11-16 17:03:36.000000000 +0200
-+++ libevent-1.4.7-stable/event.c	2008-11-16 17:06:25.894160572 +0200
-@@ -255,18 +255,12 @@
- 	if (base->evsel->dealloc != NULL)
- 		base->evsel->dealloc(base, base->evbase);
+--- libevent-2.0.3-alpha/event.c~	2009-11-19 17:43:22.000000000 +0000
++++ libevent-2.0.3-alpha/event.c	2009-11-24 15:02:31.550484522 +0000
+@@ -460,16 +460,10 @@
+ 	if (base->evsel != NULL && base->evsel->dealloc != NULL)
+ 		base->evsel->dealloc(base);
  
 -	for (i = 0; i < base->nactivequeues; ++i)
--		assert(TAILQ_EMPTY(base->activequeues[i]));
+-		EVUTIL_ASSERT(TAILQ_EMPTY(&base->activequeues[i]));
 -
--	assert(min_heap_empty(&base->timeheap));
+-	EVUTIL_ASSERT(min_heap_empty(&base->timeheap));
  	min_heap_dtor(&base->timeheap);
  
- 	for (i = 0; i < base->nactivequeues; ++i)
- 		free(base->activequeues[i]);
- 	free(base->activequeues);
+ 	mm_free(base->activequeues);
  
--	assert(TAILQ_EMPTY(&base->eventqueue));
+-	EVUTIL_ASSERT(TAILQ_EMPTY(&base->eventqueue));
 -
- 	free(base);
- }
+ 	evmap_io_clear(&base->io);
+ 	evmap_signal_clear(&base->sigmap);
  
