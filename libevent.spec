@@ -8,7 +8,7 @@ Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
 Version:	2.0.10
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
