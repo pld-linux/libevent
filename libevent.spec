@@ -3,12 +3,14 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
+%bcond_without	dietlibc	# don't build static dietlibc library
+
 #
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
 Version:	2.0.10
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
@@ -20,6 +22,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+Obsoletes:	libevent-dietlibc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -68,6 +71,20 @@ Statyczna biblioteka libevent.
 %{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
+%if %{with dietlibc}
+%configure \
+	CC="diet %{__cc} %{rpmcflags} %{rpmldflags} -Os -D_BSD_SOURCE -D_EVENT_HAVE_FD_MASK" \
+	--enable-static \
+	--disable-shared
+
+# libtool sucks, build just the libs
+%{__make}
+mv .libs/libevent.a diet-libevent.a
+mv .libs/libevent_core.a diet-libevent_core.a
+mv .libs/libevent_extra.a diet-libevent_extra.a
+%{__make} clean
+%endif
+
 %configure \
 	%{!?with_static_libs:--disable-static}
 %{__make}
