@@ -19,7 +19,9 @@ URL:		http://www.monkey.org/~provos/libevent/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
+BuildRequires:	zlib-devel
 Obsoletes:	libevent-dietlibc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,6 +42,7 @@ Summary:	Header files for libevent library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libevent
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	openssl-devel
 
 %description devel
 Header files for libevent library.
