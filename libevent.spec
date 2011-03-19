@@ -16,7 +16,7 @@ Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.monkey.org/~provos/libevent/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	openssl-devel
@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog LICENSE README
 %attr(755,root,root) %{_libdir}/libevent-2.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
