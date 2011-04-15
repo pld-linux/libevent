@@ -19,6 +19,7 @@ Patch0:		%{name}-fpm.patch
 Patch1:		%{name}.fb-changes.diff
 URL:		http://www.monkey.org/~provos/libevent/
 %{?with_dietlibc:BuildRequires:	dietlibc-static >= 2:0.31-5}
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # for some reason known only to rpm there must be "\\|" not "\|" here
@@ -77,8 +78,10 @@ Biblioteka statyczna dietlibc libevent.
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
+sed -i~ '/libevent_extra_la_LIBADD/s/$/ -levent_core/' Makefile.am
 
 %build
+%{__automake}
 %if %{with dietlibc}
 %configure \
 	CC="diet %{__cc} %{rpmcflags} %{rpmldflags} -Os -D_BSD_SOURCE -D_EVENT_HAVE_FD_MASK" \
