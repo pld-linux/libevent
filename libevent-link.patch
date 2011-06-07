@@ -1,10 +1,11 @@
---- libevent-2.0.10-stable/Makefile.am~	2010-12-16 18:38:34.000000000 +0100
-+++ libevent-2.0.10-stable/Makefile.am	2011-02-24 21:22:21.259717568 +0100
-@@ -185,16 +185,17 @@
+--- libevent-2.0.12-stable/Makefile.am~	2011-06-03 21:45:36.000000000 +0200
++++ libevent-2.0.12-stable/Makefile.am	2011-06-07 09:08:30.650818312 +0200
+@@ -193,17 +193,17 @@
  
  if PTHREADS
  libevent_pthreads_la_SOURCES = evthread_pthread.c
-+libevent_pthreads_la_LIBADD = libevent.la
+-libevent_pthreads_la_LIBADD = $(MAYBE_CORE)
++libevent_pthreads_la_LIBADD = $(MAYBE_CORE) libevent.la
  libevent_pthreads_la_LDFLAGS = $(GENERIC_LDFLAGS)
  endif
  
@@ -15,8 +16,8 @@
  
  if OPENSSL
  libevent_openssl_la_SOURCES = bufferevent_openssl.c
--libevent_openssl_la_LIBADD = $(MAYBE_CORE) -lcrypto -lssl
-+libevent_openssl_la_LIBADD = $(MAYBE_CORE) libevent.la -lcrypto -lssl
+-libevent_openssl_la_LIBADD = $(MAYBE_CORE) $(OPENSSL_LIBS)
++libevent_openssl_la_LIBADD = $(MAYBE_CORE) $(OPENSSL_LIBS) libevent.la
  libevent_openssl_la_LDFLAGS = $(GENERIC_LDFLAGS)
  endif
  
