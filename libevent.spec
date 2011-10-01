@@ -1,5 +1,4 @@
-# TODO
-# - %attr(755,root,root) %{_bindir}/event_rpcgen.py
+# TODO: %{_bindir}/event_rpcgen.py - rename to event_rpcgen?
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
