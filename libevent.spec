@@ -7,7 +7,7 @@ Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
 Version:	2.0.14
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	https://github.com/downloads/libevent/libevent/%{name}-%{version}-stable.tar.gz
@@ -77,9 +77,14 @@ Statyczna biblioteka libevent.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_lib}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+mv -f $RPM_BUILD_ROOT%{_libdir}/libevent-2.0.so.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libevent-2.0.so.*.*.*) \
+	$RPM_BUILD_ROOT%{_libdir}/libevent.so
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -90,8 +95,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog LICENSE README
-%attr(755,root,root) %{_libdir}/libevent-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent-2.0.so.5
+%attr(755,root,root) /%{_lib}/libevent-2.0.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libevent-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.5
 %attr(755,root,root) %{_libdir}/libevent_extra-2.0.so.*.*.*
