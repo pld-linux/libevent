@@ -14,6 +14,7 @@ Source0:	https://github.com/downloads/libevent/libevent/%{name}-%{version}-stabl
 # Source0-md5:	b2405cc9ebf264aa47ff615d9de527a2
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
+Patch2:		%{name}-am.patch
 URL:		http://libevent.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -65,6 +66,7 @@ Statyczna biblioteka libevent.
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}
