@@ -6,15 +6,14 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.0.21
-Release:	2
+Version:	2.0.22
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	https://github.com/downloads/libevent/libevent/%{name}-%{version}-stable.tar.gz
-# Source0-md5:	b2405cc9ebf264aa47ff615d9de527a2
+Source0:	http://downloads.sourceforge.net/levent/%{name}-%{version}-stable.tar.gz
+# Source0-md5:	c4c56f986aa985677ca1db89630a2e11
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
-Patch2:		%{name}-am.patch
 URL:		http://libevent.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -66,7 +65,6 @@ Statyczna biblioteka libevent.
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
