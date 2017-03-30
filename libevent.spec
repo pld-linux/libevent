@@ -6,18 +6,19 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.0.22
+Version:	2.1.8
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/levent/%{name}-%{version}-stable.tar.gz
-# Source0-md5:	c4c56f986aa985677ca1db89630a2e11
+#Source0Download: https://github.com/libevent/libevent/releases
+Source0:	https://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
+# Source0-md5:	f3eeaed018542963b7d2416ef1135ecc
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
 URL:		http://libevent.org/
 BuildRequires:	autoconf >= 2.60
-BuildRequires:	automake
-BuildRequires:	libtool
+BuildRequires:	automake >= 1:1.9
+BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	zlib-devel
@@ -72,6 +73,7 @@ Statyczna biblioteka libevent.
 %{__autoconf}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 	%{!?with_static_libs:--disable-static}
 %{__make}
 
@@ -82,9 +84,12 @@ install -d $RPM_BUILD_ROOT/%{_lib}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libevent-2.0.so.* $RPM_BUILD_ROOT/%{_lib}
-ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libevent-2.0.so.*.*.*) \
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libevent-2.1.so.* $RPM_BUILD_ROOT/%{_lib}
+ln -sf /%{_lib}/$(basename $RPM_BUILD_ROOT/%{_lib}/libevent-2.1.so.*.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libevent.so
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libevent*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -94,17 +99,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog LICENSE README
-%attr(755,root,root) /%{_lib}/libevent-2.0.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libevent-2.0.so.5
-%attr(755,root,root) %{_libdir}/libevent_core-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.0.so.5
-%attr(755,root,root) %{_libdir}/libevent_extra-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.0.so.5
-%attr(755,root,root) %{_libdir}/libevent_openssl-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.0.so.5
-%attr(755,root,root) %{_libdir}/libevent_pthreads-2.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.0.so.5
+%doc ChangeLog* LICENSE
+%attr(755,root,root) /%{_lib}/libevent-2.1.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libevent-2.1.so.6
+%attr(755,root,root) %{_libdir}/libevent_core-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.1.so.6
+%attr(755,root,root) %{_libdir}/libevent_extra-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.1.so.6
+%attr(755,root,root) %{_libdir}/libevent_openssl-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.1.so.6
+%attr(755,root,root) %{_libdir}/libevent_pthreads-2.1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.1.so.6
 
 %files devel
 %defattr(644,root,root,755)
@@ -115,21 +120,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libevent_extra.so
 %attr(755,root,root) %{_libdir}/libevent_openssl.so
 %attr(755,root,root) %{_libdir}/libevent_pthreads.so
-%{_libdir}/libevent.la
-%{_libdir}/libevent_core.la
-%{_libdir}/libevent_extra.la
-%{_libdir}/libevent_openssl.la
-%{_libdir}/libevent_pthreads.la
-%dir %{_includedir}/event2
-%{_includedir}/event2/*.h
+%{_includedir}/event2
 %{_includedir}/evdns.h
-%{_includedir}/event*.h
+%{_includedir}/event.h
 %{_includedir}/evhttp.h
 %{_includedir}/evrpc.h
 %{_includedir}/evutil.h
-#%%{_mandir}/man3/evdns.3*
-#%%{_mandir}/man3/event.3*
 %{_pkgconfigdir}/libevent.pc
+%{_pkgconfigdir}/libevent_core.pc
+%{_pkgconfigdir}/libevent_extra.pc
 %{_pkgconfigdir}/libevent_openssl.pc
 %{_pkgconfigdir}/libevent_pthreads.pc
 
