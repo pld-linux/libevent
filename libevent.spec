@@ -6,13 +6,13 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.1.10
+Version:	2.1.11
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/libevent/libevent/releases
 Source0:	https://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
-# Source0-md5:	999caf86f52943af2363bc8077f00167
+# Source0-md5:	7f35cfe69b82d879111ec0d7b7b1c531
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
 URL:		http://libevent.org/
@@ -67,6 +67,10 @@ Statyczna biblioteka libevent.
 %patch0 -p1
 %patch1 -p1
 
+sed -E -i -e '1s,#!\s*/usr/bin/env\s+python2(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/python(\s|$),#!%{__python}\1,' \
+      event_rpcgen.py \
+      test/check-dumpevents.py
+
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
@@ -101,15 +105,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog* LICENSE
 %attr(755,root,root) /%{_lib}/libevent-2.1.so.*.*.*
-%attr(755,root,root) %ghost /%{_lib}/libevent-2.1.so.6
+%attr(755,root,root) %ghost /%{_lib}/libevent-2.1.so.7
 %attr(755,root,root) %{_libdir}/libevent_core-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.1.so.6
+%attr(755,root,root) %ghost %{_libdir}/libevent_core-2.1.so.7
 %attr(755,root,root) %{_libdir}/libevent_extra-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.1.so.6
+%attr(755,root,root) %ghost %{_libdir}/libevent_extra-2.1.so.7
 %attr(755,root,root) %{_libdir}/libevent_openssl-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.1.so.6
+%attr(755,root,root) %ghost %{_libdir}/libevent_openssl-2.1.so.7
 %attr(755,root,root) %{_libdir}/libevent_pthreads-2.1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.1.so.6
+%attr(755,root,root) %ghost %{_libdir}/libevent_pthreads-2.1.so.7
 
 %files devel
 %defattr(644,root,root,755)
