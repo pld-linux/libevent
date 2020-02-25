@@ -16,11 +16,12 @@ Source0:	https://github.com/libevent/libevent/releases/download/release-%{versio
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
 URL:		http://libevent.org/
-BuildRequires:	autoconf >= 2.60
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	autoconf >= 2.62
+BuildRequires:	automake >= 1:1.11.2
 BuildRequires:	libtool >= 1:1.4.3
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
 Obsoletes:	libevent-dietlibc
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -67,9 +68,9 @@ Statyczna biblioteka libevent.
 %patch0 -p1
 %patch1 -p1
 
-sed -E -i -e '1s,#!\s*/usr/bin/env\s+python2(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/env\s+python(\s|$),#!%{__python}\1,' -e '1s,#!\s*/usr/bin/python(\s|$),#!%{__python}\1,' \
-      event_rpcgen.py \
-      test/check-dumpevents.py
+%{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' \
+	event_rpcgen.py \
+	test/check-dumpevents.py
 
 %build
 %{__libtoolize}
