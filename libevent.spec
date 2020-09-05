@@ -6,19 +6,19 @@
 Summary:	libevent - an event notification library
 Summary(pl.UTF-8):	libevent - biblioteka powiadamiająca o zdarzeniach
 Name:		libevent
-Version:	2.1.11
+Version:	2.1.12
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: https://github.com/libevent/libevent/releases
 Source0:	https://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
-# Source0-md5:	7f35cfe69b82d879111ec0d7b7b1c531
+# Source0-md5:	b5333f021f880fe76490d8a799cd79f4
 Patch0:		%{name}-fpm.patch
 Patch1:		%{name}-link.patch
-URL:		http://libevent.org/
-BuildRequires:	autoconf >= 2.62
-BuildRequires:	automake >= 1:1.11.2
-BuildRequires:	libtool >= 1:1.4.3
+URL:		https://libevent.org/
+BuildRequires:	autoconf >= 2.67
+BuildRequires:	automake >= 1:1.13
+BuildRequires:	libtool >= 2:2.4.2
 BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
@@ -76,6 +76,7 @@ Statyczna biblioteka libevent.
 %{__libtoolize}
 %{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-silent-rules \
