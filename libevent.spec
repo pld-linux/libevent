@@ -68,7 +68,7 @@ Statyczna biblioteka libevent.
 %patch0 -p1
 %patch1 -p1
 
-%{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' \
+%{__sed} -i -e '1s,/usr/bin/env python$,%{__python3},' \
 	event_rpcgen.py \
 	test/check-dumpevents.py
 
@@ -119,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-# R: python
+# R: python3
 %attr(755,root,root) %{_bindir}/event_rpcgen.py
 %attr(755,root,root) %{_libdir}/libevent.so
 %attr(755,root,root) %{_libdir}/libevent_core.so
