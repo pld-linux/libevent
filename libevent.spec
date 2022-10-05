@@ -23,7 +23,7 @@ BuildRequires:	openssl-devel
 BuildRequires:	pkgconfig
 BuildRequires:	sed >= 4.0
 BuildRequires:	zlib-devel
-Obsoletes:	libevent-dietlibc
+Obsoletes:	libevent-dietlibc < 2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
